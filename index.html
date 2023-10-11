@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640, user-scalable=no">
+    <title>MULAH Loyalty Program</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+
+<div id="app">
+    <div v-if="currentPage === 1" class="container">
+        <h2>MULAH</h2>
+        <h1>Hello,</h1>
+        <h1>Welcome!</h1>
+        <p>Check Your Loyalty Points & Rewards</p>
+
+        <div class="phone-input-container">
+            <select v-model="countryCode">
+                <!-- Example country codes, can add more -->
+                <option value="+1">+1</option>
+                <option value="+60">+60</option>
+                <option value="+44">+44</option>
+                <!-- ... add other country codes as needed ... -->
+            </select>
+            <input type="text" v-model="phoneWithoutCode" placeholder="Phone Number">
+        </div>
+        
+        <button @click="checkLoyalty">Check Loyalty Points</button>
+        <div class="nav-bottom">
+            <hr>
+            <h5><span>Powered by</span> <a href="https://www.MulahRewards.com" target="_blank">MulahRewards.com</a></p>
+        </div>
+    </div>
+
+    <div v-if="currentPage === 2" class="container">
+        <div class="back-arrow" @click="showPage(1)"></div>
+        <h2>MULAH</h2>
+        <h3 class="registration-title">Registration</h3>
+        <p class="details-text">Please fill up your details</p>
+    
+        <div class="input-section">
+            <h3>Name</h4>
+            <input v-model="name" placeholder="Enter Name" required>
+            <p class="error-message" v-if="!name">*Please insert a name.</p>
+        </div>
+        
+        <div class="input-section">
+            <h3>Birthday</h4>
+            <div class="date-inputs">
+                <input type="text" v-model="day" placeholder="DD" required>
+                <input type="text" v-model="month" placeholder="MM" required>
+                <input type="text" v-model="year" placeholder="YYY" required>
+            </div>
+            <p class="error-message" v-if="!day || !month || !year">*Please insert your birthday.</p>
+        </div>
+
+        <div class="input-section">
+            <h3>Email</h3>
+            <div class="email-container">
+                <input type="email" v-model="email" placeholder="Email Address" :required="!noEmail" style="flex: 1;">
+                <p class="error-message" v-if="!email">*Please insert a valid email address.</p>
+            </div>
+            <label class="no-email-option">
+                <input type="checkbox" v-model="noEmail"> No email address
+            </label>
+        </div>
+    
+        <button @click="showPage(3)">Continue</button>
+    </div>
+
+    <div v-if="currentPage === 3" class="container">
+        <div class="container-box">
+            <p><strong>Phone:</strong> {{ phoneInput }}</p>
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Birthday:</strong> {{ birthday }}</p>
+        </div>
+        <button @click="showPage(1)">Back to Main</button>
+    </div>
+    
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

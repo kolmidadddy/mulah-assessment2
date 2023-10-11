@@ -1,0 +1,187 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    width: 640px;
+    height: 1136px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: auto; /* To allow scrolling if the content overflows */
+}
+
+.container {
+    position: relative; /* Add this line */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+.container-box {
+    background-color: #ffffff; /* White background */
+    padding: 20px; /* Space inside the box */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 600px; /* Set a maximum width */
+    width: 100%; /* Full width, but it won't exceed the max-width */
+    box-sizing: border-box; /* Make sure padding doesn't expand box beyond 100% width */
+    margin-top: 50px; /* Space from the top, adjust as needed */
+}
+
+
+.page-1 h1, 
+.page-1 p {
+    text-align: right; /* or any other style changes you want */
+}
+
+.details-text {
+    padding-right: 800px; /* Adjust this value as desired */
+}
+
+.registration-title{
+    padding-right: 872px; /* Adjust this value as desired */
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    border: solid #FF8C00; /* Use the theme color */
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 7px;
+    transform: rotate(135deg);
+}
+
+h1 {
+    color: grey;
+}
+h2 {
+    color: #FF8C00;
+    text-align: center;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+h3 {
+    color: grey;
+}
+h5 {
+    color: grey;
+}
+
+p {
+    color: #FF8C00;
+}
+
+button {
+    background-color: #FF8C00;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: auto;
+}
+
+
+.input-section {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.error-message {
+    color: red;
+    font-style: italic;
+}
+
+.date-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.no-email-option {
+    font-size: 12px;
+    margin-top: 5px;
+    color: grey;
+    align-self: flex-start; /* This will align the checkbox to the left */
+}
+
+.nav-bottom {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    color: black;
+}
+
+.nav-bottom a {
+    color: #FF8C00;
+    text-decoration: none;
+}
+
+.nav-bottom a:hover {
+    text-decoration: underline;
+}
+
+input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.phone-input-container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    gap: 10px;
+}
+
+.phone-input-container select,
+.phone-input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.email-container {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    flex-direction: column; /* To stack the elements vertically */
+}
+
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #777;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #FF8C00;
+    color: #fff;
+    border-color: #FF8C00;
+}
