@@ -1,7 +1,7 @@
 const app = {
     data() {
         return {
-            countryCode: '', // Default to empty string
+            countryCode: '',
             phoneWithoutCode: '',
             name: '',
             email: '',
@@ -31,6 +31,18 @@ const app = {
                     this.countries = countries;
                 });
         },
+        populateCountryCodeDropdown() {
+            const selectElement = document.querySelector('.phone-input-container select');
+
+            this.countries.forEach(country => {
+                const countryCode = country.callingCodes[0];
+                const optionElement = document.createElement('option');
+                optionElement.value = `+${countryCode}`;
+                optionElement.textContent = `+${countryCode}`;
+
+                selectElement.appendChild(optionElement);
+            });
+        },
         checkLoyalty() {
             // You can expand on this condition or fetch from the server to verify
             if (this.phoneInput === '+60173527250') {
@@ -53,16 +65,7 @@ const app = {
     mounted() {
         // Fetch country data when the component is mounted
         this.fetchCountryData();
-    },
-    watch: {
-        countries: {
-            handler() {
-                // When countries data changes, populate the country code dropdown
-                this.populateCountryCodeDropdown();
-            },
-            deep: true,
-        },
-    },
+    }
 };
 
 Vue.createApp(app).mount('#app');
