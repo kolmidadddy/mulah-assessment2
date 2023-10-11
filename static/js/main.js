@@ -1,15 +1,16 @@
 const app = {
     data() {
         return {
-            countryCode: '+60',
+            countryCode: '',
             phoneWithoutCode: '',
             name: '',
             email: '',
-            day: '', 
-            month: '', 
+            day: '',
+            month: '',
             year: '',
             noEmail: false,
-            currentPage: 1
+            currentPage: 1,
+            countries: [], // To store the fetched country data
         };
     },
     computed: {
@@ -21,8 +22,29 @@ const app = {
         }
     },
     methods: {
+        fetchCountryData() {
+            // Fetch country data from the API
+            fetch('https://restcountries.com/v3.1/all')
+                .then(response => response.json())
+                .then(countries => {
+                    // Store the fetched countries in the data property
+                    this.countries = countries;
+                });
+        },
+        populateCountryCodeDropdown() {
+            const selectElement = document.querySelector('.phone-input-container select');
+
+            this.countries.forEach(country => {
+                const countryCode = country.callingCodes[0];
+                const optionElement = document.createElement('option');
+                optionElement.value = `+${countryCode}`;
+                optionElement.textContent = `+${countryCode}`;
+
+                selectElement.appendChild(optionElement);
+            });
+        },
         checkLoyalty() {
-            // You can expand on this condition or fetch from server to verify
+            // You can expand on this condition or fetch from the server to verify
             if (this.phoneInput === '+60173527250') {
                 this.currentPage = 2;
             } else {
@@ -39,6 +61,10 @@ const app = {
                 alert('Please fill in all required fields!');
             }
         }
+    },
+    mounted() {
+        // Fetch country data when the component is mounted
+        this.fetchCountryData();
     }
 };
 

@@ -71,6 +71,9 @@ h3 {
 h5 {
     color: grey;
 }
+h6 {
+    color: lightgrey;
+}
 
 p {
     color: #FF8C00;
